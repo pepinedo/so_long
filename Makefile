@@ -39,7 +39,7 @@ OBJF = .cache_exists
 
 ###
 
-all:		$(NAME)
+all:	$(NAME)
 
 #-------------If u are using MacOS----------------
 $(NAME):	$(OBJ)

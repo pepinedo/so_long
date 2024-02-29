@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:19:13 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/02/12 10:28:36 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:31:12 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@
 
 # define WIDTH 64
 # define HEIGHT 64
+
+struct t_map
+{
+	char**	mapa;
+};	s_map
+
 
 int			main(void);
 
