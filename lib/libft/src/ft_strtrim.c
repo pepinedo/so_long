@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 11:08:54 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/02/08 11:18:42 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/03/05 13:37:12 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	k = 0;
 	if (!s1 || !set)
 		return (0);
-	len = ft_strlen(s1);
+	len = ft_strlen((char*)s1);
 	while (flag(set, s1[i]) && s1[i])
 		i++;
 	while (flag(set, s1[len - 1]) && (len - 1))

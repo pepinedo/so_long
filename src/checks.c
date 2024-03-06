@@ -1,25 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   checks.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 11:20:31 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/03/05 13:28:27 by ppinedo-         ###   ########.fr       */
+/*   Created: 2024/03/06 15:39:12 by ppinedo-          #+#    #+#             */
+/*   Updated: 2024/03/06 16:11:05 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "../includes/so_long.h"
 
-size_t	ft_strlen(char *s)
+void	check_if_its_ber(char *fdmap)
 {
-	size_t	i;
+	int	i;
 
-	if (s == NULL)
-		return (0);
 	i = 0;
-	while (s[i] != '\0')
+	while (fdmap[i])
 		i++;
-	return (i);
+	if (fdmap[--i] != 'r' && fdmap[--i] != 'e' && fdmap[--i] != 'b'
+		&& fdmap[--i] != '.')
+		exit_with_message(3);
+}
+
+void	check_if_its_rectangular(t_data *data)
+{
+	int i;
+
+	i = 0;
+	while(i < (data->height - 1))
+	{
+		if (data->line_width[i] != data->line_width[i + 1])
+			exit_with_message(4);
+		i++;
+	}
 }

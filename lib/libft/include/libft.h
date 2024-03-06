@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 15:55:17 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/02/08 13:02:18 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/03/06 16:09:31 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ char	*ft_itoa(int n); // to change from int to char
  * @param str String
  * @return size_t - len
  */
-int	ft_strlen(const char *str);
+size_t	ft_strlen(char *s);
 
 /**
  * @brief compare 2 string (n characters)
@@ -69,7 +69,7 @@ int		ft_strncmp(const char *str1, const char *str2, size_t n);
  * @param dstsize 
  * @return size_t - the size of the string copied
  */
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
 
 /**
  * @brief concatenate 'l' characters from src to dst
@@ -79,7 +79,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
  * @param dstsize 
  * @return size_t - the size of the new str
  */
-size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, char *src, size_t dstsize);
 
 /**
  * @brief to check if the 'c' character is in the string
@@ -88,7 +88,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
  * @param c 
  * @return char* 
  */
-char	*ft_strchr(const char *s, int c);
+unsigned int	ft_strchr(char *s, char c);
 
 /**
  * @brief to check if the 'c' character is in the string
@@ -107,7 +107,7 @@ char	*ft_strrchr(const char *s, int c);
  * @param len 
  * @return char* - return the finded
  */
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
+char	*ft_strnstr(const char *haystack, char *needle, size_t len);
 
 /**
  * @brief to create (duplicate) a string
@@ -125,7 +125,7 @@ char	*ft_strdup(const char *s1);
  * @param len size of the substring
  * @return char* - the substring
  */
-char	*ft_substr(char const *s, int start, int len);
+char	*ft_substr(char *s, size_t start, size_t len);
 
 /**
  * @brief Concadenate de s2 into s1, creating a new str
@@ -134,7 +134,7 @@ char	*ft_substr(char const *s, int start, int len);
  * @param s2 
  * @return char* 
  */
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *s1, char *s2);
 
 /**
  * @brief create a new str applying the Function to each character to the str
@@ -278,7 +278,7 @@ int		ft_putnbr(int nbr, int i);
 int		ft_putptr(void *ptr);
 int		ft_putunbr(unsigned int nbr, int i);
 int		ft_puthex(char *base, unsigned int nbr, int i);
-int		ft_strlen(const char *str);
+size_t		ft_strlen(char *s);
 
 /** List Functions **/
 t_list	*ft_lstnew(void *content);

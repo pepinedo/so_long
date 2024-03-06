@@ -6,29 +6,27 @@
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 17:22:07 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/02/08 11:17:18 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/03/05 13:22:56 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-char	*ft_strchr(const char *s, int c)
+unsigned int	ft_strchr(char *s, char c)
 {
-	int		i;
-	char	a;
-	char	*as;
+	unsigned int		i;
 
-	a = (char)c;
+	if (s == NULL)
+		return (0);
 	i = 0;
-	as = (char *)s;
-	while (as[i])
+	while (s[i] != '\0')
 	{
-		if (as[i] == a)
-			return (&as[i]);
+		if (s[i] == c)
+			return (1);
 		i++;
 	}
-	if (a == '\0')
-		return (&as[i]);
+	if (c == '\0')
+		return (1);
 	return (0);
 }
 

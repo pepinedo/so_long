@@ -6,13 +6,13 @@
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 16:53:39 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/02/08 11:18:10 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/03/05 13:30:56 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
 {
 	size_t	i;
 	size_t	srcsize;

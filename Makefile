@@ -3,12 +3,13 @@
 NAME = so_long
 USER = ppinedo-
 B_NAME = none
-INCLUDE = include
-MLX42 = lib/MLX42
+INCLUDE = include/
+MLX42 = lib/MLX42/
+LIBFT = lib/libft/
 SRC_DIR = src/
 B_SRC_DIR = src/bonus/
 OBJ_DIR = obj/
-CC = gcc
+CC = gcc -g
 CFLAGS = -Wall -Werror -Wextra
 AR = ar rcs
 
@@ -27,7 +28,7 @@ WHITE = \033[0;97m
 
 #Sources
 	
-SRC_FILES = main
+SRC_FILES = main exit_with_message map_parsec checks
 
 B_SRC_FILES = 
 
@@ -39,40 +40,43 @@ OBJF = .cache_exists
 
 ###
 
-all:	$(NAME)
+all:
+	@$(MAKE) -C $(MLX42)
+	@$(MAKE) -C $(LIBFT)	
+	@$(MAKE) $(NAME)
 
 #-------------If u are using MacOS----------------
 $(NAME):	$(OBJ)
-			@make -C $(MLX42)
-			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -o $(NAME) -L$(MLX42) -lmlx42 -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
+			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -o $(NAME) -L$(MLX42) -lmlx42 -L$(LIBFT)  -lft -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
 			@echo "$(GREEN)✅$(NAME) COMPILED!✅$(DEF_COLOR)"
 
 #-------------If u are using Linux---------------
 # $(NAME):	$(OBJ)
-# 			@make -C $(MLX42)
 # 			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -o $(NAME) -L$(MLX42) -lmlx42 -Iinclude -ldl -lglfw -pthread -lm
 # 			@echo "$(GREEN)✅$(NAME) COMPILED!✅$(DEF_COLOR)"
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-			@$(CC) -I./$(INCLUDE) $(INCLUDEMLX) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)%.o: $(B_SRC_DIR)%.c | $(OBJF)
-			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-			@$(CC) -I./$(INCLUDE) $(CFLAGS) -c $< -o $@
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
+			@echo "$(YELLOW)Compiling:$(DEF_COLOR) $<"
+			@$(CC) $(CFLAGS) -I./$(INCLUDE) $(INCLUDEMLX) -c $< -o $@
+
+# $(OBJ_DIR)%.o: $(B_SRC_DIR)%.c | $(OBJF)
+# 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+# 			@$(CC) -I./$(INCLUDE) $(CFLAGS) -c $< -o $@
 
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)
 
 clean:
 			@rm -rf $(OBJ_DIR)
-			@echo "$(BLUE)🧼$(NAME) object files cleaned!🧼$(DEF_COLOR)"
+			@echo "$(RED)Object files$(DEF_COLOR) $(NAME) $(RED)cleaned!🧼$(DEF_COLOR)"
 
-fclean:		
-			@rm -rf $(OBJ_DIR)
+fclean:	clean	
 			@rm -f $(NAME)
 			@rm -f $(B_NAME)
-			@echo "$(BLUE)🧼$(NAME) executable cleaned!🧼$(DEF_COLOR)"
+			@$(MAKE) -C $(LIBFT) fclean
+			@$(MAKE) -C $(MLX42) fclean
+			@echo "$(RED)Executable$(DEF_COLOR) $(NAME) $(RED)cleaned!🧼$(DEF_COLOR)"
 
 re:			fclean all
 			@echo "$(MAGENTA)📦$(NAME) recompiled!📦$(DEF_COLOR)"
@@ -82,7 +86,8 @@ norm:
 			@echo "$(GREEN) ✅NORMINETTE OK!✅$(DEF_COLOR)"
 
 bonus: $(B_OBJ)
-			@make -C $(LIBFT)
+			@$(MAKE) -C $(MLX42)
+			@$(MAKE) -C $(LIBFT)	
 			@$(CC) $(CFLAGS) $(B_OBJ) -L$(LIBFT) -lft -o $(B_NAME)
 			@echo "$(MAGENTA)$(B_NAME) ✅compiled!✅$(DEF_COLOR)"
 

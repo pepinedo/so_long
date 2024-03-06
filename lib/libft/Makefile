@@ -6,7 +6,7 @@
 #    By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/14 16:53:19 by ppinedo-          #+#    #+#              #
-#    Updated: 2024/02/08 13:01:10 by ppinedo-         ###   ########.fr        #
+#    Updated: 2024/03/06 11:52:35 by ppinedo-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,7 @@ $(NAME):	$(OBJ)
 			@echo "$(GREEN)✅$(NAME) COMPILED!✅$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+			@echo "$(YELLOW)Compiling:$(DEF_COLOR) $< "
 			@$(CC) -I./$(INCLUDE) $(CFLAGS) -c $< -o $@
 
 $(OBJ_DIR)%.o: $(B_SRC_DIR)%.c | $(OBJF)
@@ -114,13 +114,13 @@ $(OBJF):
 
 clean:
 			@rm -rf $(OBJ_DIR)
-			@echo "$(BLUE)🧼$(NAME) object files cleaned!🧼$(DEF_COLOR)"
+			@echo "$(RED)Object files$(DEF_COLOR) $(NAME) $(RED)cleaned!🧼$(DEF_COLOR)"
 
 fclean:		
 			@rm -rf $(OBJ_DIR)
 			@rm -f $(NAME)
 			@rm -f $(B_NAME)
-			@echo "$(BLUE)🧼$(NAME) executable cleaned!🧼$(DEF_COLOR)"
+			@echo "$(RED)Executable$(DEF_COLOR) $(NAME) $(RED)cleaned!🧼$(DEF_COLOR)"
 
 re:			fclean all
 			@echo "$(MAGENTA)📦$(NAME) recompiled!📦$(DEF_COLOR)"

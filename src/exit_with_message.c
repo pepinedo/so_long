@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   exit_with_message.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/29 11:20:31 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/03/05 13:28:27 by ppinedo-         ###   ########.fr       */
+/*   Created: 2024/03/05 11:03:32 by ppinedo-          #+#    #+#             */
+/*   Updated: 2024/03/06 16:06:18 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "../includes/so_long.h"
 
-size_t	ft_strlen(char *s)
+void	exit_with_message(int a)
 {
-	size_t	i;
-
-	if (s == NULL)
-		return (0);
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
+	if (a == 1)
+		printf("Error\nTo few arguments.\n");
+	if (a == 2)
+		printf("Error\nTo much arguments.\n");
+	if (a == 3)
+		printf("Error\nArgument is not a .ber file");
+	if (a == 4)
+		printf("Error\nThe map is not rectangular.");
+	exit (0);
 }
