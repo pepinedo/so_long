@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:19:13 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/03/06 16:36:50 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/03/07 12:27:18 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,15 @@ void	map_height(char *fdmap, t_data *data);
 void	map_char(char *fdmap, t_data *data);
 void	map_width(char *fdmap, t_data *data);
 
-//----------Checker functions-------------
+//----------Check functions-------------
 void	check_if_its_ber(char *fdmap);
 void	check_if_its_rectangular(t_data *data);
+void	check_if_its_enclosed(t_data *data);
+void	line_are_all_1(char *line);
+void	column_are_all_1(t_data *data, int column);
+void	check_if_have_exit(t_data *data);
+void	check_collectibles(t_data *data);
+void	check_starting_position(t_data *data);
 
 //----------Utils------------------------
 void	ft_strdup_without_n(const char *str, int i, t_data *data);

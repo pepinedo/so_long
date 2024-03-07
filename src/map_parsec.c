@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:00:07 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/03/06 16:56:52 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/03/07 12:27:09 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,14 @@ void	map_width(char *fdmap, t_data *data)
 	if (data->line_width == NULL)
 		return ;
 	i = 0;
-	while (i <= data->height)
+	while (i < data->height)
 	{
 		line = get_next_line(fd);
-		data->line_width[i] = ((int)ft_strlen(line) - 1);
-		i++;
+		data->line_width[i] = (int)ft_strlen(line);
 		printf("el ancho es -> %i\n", data->line_width[i]);
+		i++;
 	}
+	data->width = (data->line_width[0] - 1);
 	close(fd);
 }
 
@@ -76,7 +77,7 @@ void	map_height(char *fdmap, t_data *data)
 		(data->height)++;
 		line = get_next_line(fd);
 	}
-	printf("el ancho es -> %i\n", data->height);
+	printf("el alto es -> %i\n", data->height);
 	close(fd);
 }
 
@@ -91,5 +92,9 @@ int	map_parsec(char *fdmap, t_data *data)
 	map_char(fdmap, data);
 	check_if_its_ber(fdmap);
 	check_if_its_rectangular(data);
+	check_if_its_enclosed(data);
+	check_if_have_exit(data);
+	check_collectibles(data);
+	check_starting_position(data);
 	return (0);
 }
