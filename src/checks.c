@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 15:39:12 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/03/07 12:26:44 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/03/22 10:51:37 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,34 +114,37 @@ void	check_collectibles(t_data *data)
 	}
 	if (C == 0)
 		exit_with_message(8);
-	printf("El mapa tiene %i coleccionables\n", C);
+	data->collectibles = C;
+	printf("El mapa tiene %i coleccionables\n", data->collectibles);
 }
 
 void	check_starting_position(t_data *data)
 {
-	int i;
-	int j;
+	int y;
+	int x;
 	int P;
 
-	j = 0;
-	i = 0;
+	y = 0;
+	x = 0;
 	P = 0;
-	while(i < data->height)
+	while(y < data->height)
 	{
-		while(data->mapstr[i][j])
+		while(data->mapstr[y][x])
 		{
-			if (data->mapstr[i][j] == 'P')
+			if (data->mapstr[y][x] == 'P')
 				P++;
-			j++;
+			x++;
 		}
-		i++;
-		j = 0;
+		y++;
+		x = 0;
 	}
+	data->start_y = y;
+	data->start_x = x;
 	if (P == 0)
 		exit_with_message(9);
 	if (P > 1)
 		exit_with_message(10);
-	printf("El mapa tiene posición inicial\n");
+	printf("El mapa tiene una posicion de salida\n");
 }
 
 void	check_if_its_enclosed(t_data *data)

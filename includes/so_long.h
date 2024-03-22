@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:19:13 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/03/07 12:27:18 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/03/11 19:07:07 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ typedef struct s_data
 	int		width;
 	int*	line_width;
 	char**	mapstr;
+	int 	collectibles;
+	int		start_y;
+	int		start_x;
 }				t_data;
 
 int		main(int argc, char **argv);
@@ -50,6 +53,7 @@ void	column_are_all_1(t_data *data, int column);
 void	check_if_have_exit(t_data *data);
 void	check_collectibles(t_data *data);
 void	check_starting_position(t_data *data);
+void	floodfill(char **map, int y, int x, int collectibles);
 
 //----------Utils------------------------
 void	ft_strdup_without_n(const char *str, int i, t_data *data);

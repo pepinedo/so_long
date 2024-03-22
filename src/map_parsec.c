@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:00:07 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/03/07 12:27:09 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/03/11 19:07:28 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,6 @@ int	map_parsec(char *fdmap, t_data *data)
 	check_if_have_exit(data);
 	check_collectibles(data);
 	check_starting_position(data);
+	floodfill(data->mapstr, data->start_y, data->start_x, data->collectibles);
 	return (0);
 }

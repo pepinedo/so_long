@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:03:32 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/03/07 12:26:18 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/03/11 16:54:34 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@ void	exit_with_message(int a)
 		printf("Error\nMap without starting position\n");
 	if (a == 10)
 		printf("Error\nMap with more than 1 starting position\n");
+	if (a == 11)
+		printf("Error\nMap have no reachable exit\n");
 	exit (0);
 }

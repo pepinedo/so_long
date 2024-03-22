@@ -28,7 +28,7 @@ WHITE = \033[0;97m
 
 #Sources
 	
-SRC_FILES = main exit_with_message map_parsec checks
+SRC_FILES = main exit_with_message map_parsec checks floodfill
 
 B_SRC_FILES = 
 
