@@ -3,56 +3,79 @@
 /*                                                        :::      ::::::::   */
 /*   floodfill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:44:44 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/03/22 10:49:11 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/06/04 17:32:19 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	floodfill(char **map, int y, int x, int collectibles) //contadores y salida
+void	print_map(char **map)
 {
-	bool	exit;
+	int i;
 
-	exit = false;
-	if (map[y + 1][x] != '1')
+	i = 0;
+	while (i < 6)
 	{
-		if (map[y + 1][x] == 'C')
-			collectibles--;
-		if (map[y + 1][x] == 'E')
-			exit = true;
-		map[y + 1][x] = '1';
-		floodfill(map, ++y, x, collectibles);
+		printf("%s\n", map[i]);
+		i++;
 	}
-	if (map[y][x + 1] != '1')
+}
+
+void	copy_map(t_data *data)
+{
+	int		i;
+
+	data->mapstrcopy = (char **)malloc(sizeof(char *) * data->height);
+	if (data->mapstrcopy == NULL)
+		return ;
+	i = 0;
+	while (i < data->height)
 	{
-		if (map[y + 1][x] == 'C')
-			collectibles--;
-		if (map[y + 1][x] == 'E')
-			exit = true;
-		map[y + 1][x] = '1';
-		floodfill(map, y, ++x, collectibles);
+		data->mapstrcopy[i] = (char *)malloc(sizeof(char) * (data->height));
+		if (data->mapstrcopy[i] == NULL)
+			return ;
+		data->mapstrcopy[i] = ft_strtrim(data->mapstr[i], "\n");
+		i++;
 	}
-	if (map[y - 1][x] != '1')
+}
+
+void    check_flood(char **map)
+{
+    int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	while (map[x][y])
 	{
-		if (map[y + 1][x] == 'C')
-			collectibles--;
-		if (map[y + 1][x] == 'E')
-			exit = true;
-		map[y + 1][x] = '1';
-		floodfill(map, --y, x, collectibles);
+		y = 0;
+		while (map[x][y])
+		{
+			if (map[x][y] == 'P' || map[x][y] == 'C' || map[x][y] == 'E')
+			{
+				exit_with_message(12);
+			}
+			y++;
+		}
+		x++;
 	}
-	if (map[y][x - 1] != '1')
+	printf("Salida alcanzable con todos los coleccionables.\n");
+}
+
+void	floodfill(char **map, int x, int y)
+{
+	if (y < 0 || x < 0 || !map[x][y] || map[x][y] == '1')
+		return;
+	print_map(map);
+	if (map[x][y] == '0' || map[x][y] == 'C' || map[x][y] == 'E' || map[x][y] == 'P')
 	{
-		if (map[y + 1][x] == 'C')
-			collectibles--;
-		if (map[y + 1][x] == 'E')
-			exit = true;
-		map[y + 1][x] = '1';
-		floodfill(map, y, --x, collectibles);
+		map[x][y] = '1';
+		floodfill(map, x + 1, y);
+		floodfill(map, x, y + 1);
+		floodfill(map, x - 1, y);
+		floodfill(map, x, y - 1);
 	}
-	if (collectibles != 0 && !exit)
-		exit_with_message(11);
 }

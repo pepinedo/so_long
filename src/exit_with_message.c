@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_with_message.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:03:32 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/03/11 16:54:34 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/06/04 17:07:01 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,9 @@ void	exit_with_message(int a)
 		printf("Error\nMap with more than 1 starting position\n");
 	if (a == 11)
 		printf("Error\nMap have no reachable exit\n");
+	if (a == 12)
+		printf("Error\nMap with Exit no reachable\n");
+	if (a == 13)
+		printf("Error\nMap with invalid characters\n");
 	exit (0);
 }

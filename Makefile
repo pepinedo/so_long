@@ -9,7 +9,7 @@ LIBFT = lib/libft/
 SRC_DIR = src/
 B_SRC_DIR = src/bonus/
 OBJ_DIR = obj/
-CC = gcc -g
+CC = clang
 CFLAGS = -Wall -Werror -Wextra
 AR = ar rcs
 
@@ -46,23 +46,19 @@ all:
 	@$(MAKE) $(NAME)
 
 #-------------If u are using MacOS----------------
-$(NAME):	$(OBJ)
-			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -o $(NAME) -L$(MLX42) -lmlx42 -L$(LIBFT)  -lft -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
-			@echo "$(GREEN)✅$(NAME) COMPILED!✅$(DEF_COLOR)"
+# $(NAME):	$(OBJ)
+# 			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -o $(NAME) -L$(MLX42) -lmlx42 -L$(LIBFT)  -lft -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
+# 			@echo "$(GREEN)✅$(NAME) COMPILED!✅$(DEF_COLOR)"
 
 #-------------If u are using Linux---------------
-# $(NAME):	$(OBJ)
-# 			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -o $(NAME) -L$(MLX42) -lmlx42 -Iinclude -ldl -lglfw -pthread -lm
-# 			@echo "$(GREEN)✅$(NAME) COMPILED!✅$(DEF_COLOR)"
+$(NAME):	$(OBJ)
+			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -o $(NAME) -L$(MLX42) -lmlx42 -L$(LIBFT) -lft -Iinclude -ldl -lglfw -pthread -lm
+			@echo "$(GREEN)✅$(NAME) COMPILED!✅$(DEF_COLOR)"
 
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 			@echo "$(YELLOW)Compiling:$(DEF_COLOR) $<"
 			@$(CC) $(CFLAGS) -I./$(INCLUDE) $(INCLUDEMLX) -c $< -o $@
-
-# $(OBJ_DIR)%.o: $(B_SRC_DIR)%.c | $(OBJF)
-# 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-# 			@$(CC) -I./$(INCLUDE) $(CFLAGS) -c $< -o $@
 
 $(OBJF):
 			@mkdir -p $(OBJ_DIR)

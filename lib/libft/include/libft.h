@@ -20,7 +20,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdarg.h>
-# include <libc.h>
 
 typedef struct s_list
 {

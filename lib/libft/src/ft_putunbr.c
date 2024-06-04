@@ -16,11 +16,6 @@ int	ft_putunbr(unsigned int nbr, int i)
 {
 	if (nbr == 0)
 		return (write(1, "0", 1));
-	if (nbr < 0)
-	{
-		i += write(1, "-", 1);
-		nbr = nbr * -1;
-	}
 	if (nbr > 9)
 	{
 		i = ft_putunbr(nbr / 10, i++);

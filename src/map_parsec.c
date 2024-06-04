@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:00:07 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/03/11 19:07:28 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/06/04 17:47:47 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,10 +92,15 @@ int	map_parsec(char *fdmap, t_data *data)
 	map_char(fdmap, data);
 	check_if_its_ber(fdmap);
 	check_if_its_rectangular(data);
+	check_characters(data);
 	check_if_its_enclosed(data);
 	check_if_have_exit(data);
 	check_collectibles(data);
 	check_starting_position(data);
-	floodfill(data->mapstr, data->start_y, data->start_x, data->collectibles);
+	check_characters(data);
+	copy_map(data);
+	floodfill(data->mapstrcopy, data->start_x, data->start_y);
+	check_flood(data->mapstrcopy);
+	printf("Parseo completado y todo bien\n");
 	return (0);
 }
