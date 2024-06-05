@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:00:07 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/06/04 17:47:47 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:53:09 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,18 @@ void	map_char(char *fdmap, t_data *data)
 	fd = open(fdmap, O_RDONLY);
 	if (fd == -1)
 		return ;
-	data->mapstr = (char **)malloc(sizeof(char *) * data->height);
+	data->mapstr = (char **)malloc(sizeof(char *) * (data->height + 1));
 	if (data->mapstr == NULL)
 		return ;
 	i = 0;
 	while (i < data->height)
 	{
 		str = get_next_line(fd);
-		data->mapstr[i] = (char *)malloc(sizeof(char) * (data->height));
-		if (data->mapstr[i] == NULL)
-			return ;
 		data->mapstr[i] = ft_strtrim(str, "\n");
-		printf("%s\n", data->mapstr[i]);
+		free(str);
 		i++;
 	}
+	data->mapstr[i] = NULL;
 	close(fd);
 }
 
@@ -55,7 +53,7 @@ void	map_width(char *fdmap, t_data *data)
 	{
 		line = get_next_line(fd);
 		data->line_width[i] = (int)ft_strlen(line);
-		printf("el ancho es -> %i\n", data->line_width[i]);
+		free(line);
 		i++;
 	}
 	data->width = (data->line_width[0] - 1);
@@ -74,33 +72,28 @@ void	map_height(char *fdmap, t_data *data)
 	data->height = 0;
 	while (line)
 	{
+		free(line);
 		(data->height)++;
 		line = get_next_line(fd);
 	}
-	printf("el alto es -> %i\n", data->height);
 	close(fd);
 }
 
-int	map_parsec(char *fdmap, t_data *data)
+void	map_parsec(char *fdmap, t_data *data)
 {
 	check_if_its_ber(fdmap);
-	data = malloc(sizeof(t_data));
-	if (data == NULL)
-		return (0);
 	map_height(fdmap, data);
 	map_width(fdmap, data);
 	map_char(fdmap, data);
-	check_if_its_ber(fdmap);
-	check_if_its_rectangular(data);
 	check_characters(data);
+	check_if_its_rectangular(data);
 	check_if_its_enclosed(data);
+	check_starting_position(data);
 	check_if_have_exit(data);
 	check_collectibles(data);
-	check_starting_position(data);
-	check_characters(data);
 	copy_map(data);
-	floodfill(data->mapstrcopy, data->start_x, data->start_y);
-	check_flood(data->mapstrcopy);
-	printf("Parseo completado y todo bien\n");
-	return (0);
+	floodfill(data->mapstrcopy, data->player_x - 1, data->player_y - 1);
+	check_flood(data);
+	printf("✅​ MAPA OK.\n");
+	return;
 }

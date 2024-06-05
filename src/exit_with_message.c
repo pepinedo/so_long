@@ -6,11 +6,41 @@
 /*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:03:32 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/06/04 17:07:01 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:16:42 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	ft_freestr(char **s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		free(s[i]);
+		i++;
+	}
+	free(s);
+}
+
+void	ft_free2(t_data *data)
+{
+	ft_freestr(data->mapstr);
+	ft_freestr(data->mapstrcopy);
+	free(data->line_width);
+	free(data);
+	exit (0);
+}
+
+void	ft_free1(t_data *data)
+{
+	ft_freestr(data->mapstr);
+	free(data->line_width);
+	free(data);
+	exit (0);
+}
 
 void	exit_with_message(int a)
 {
@@ -40,5 +70,4 @@ void	exit_with_message(int a)
 		printf("Error\nMap with Exit no reachable\n");
 	if (a == 13)
 		printf("Error\nMap with invalid characters\n");
-	exit (0);
 }

@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 15:39:12 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/06/04 17:40:12 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/06/05 16:49:28 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,23 @@ void	check_if_its_rectangular(t_data *data)
 	while(i < (data->height - 2))
 	{
 		if (data->line_width[i] != data->line_width[i + 1])
+		{
 			exit_with_message(4);
+			ft_free1(data);
+		}
 		i++;
 	}
 	if(data->line_width[i] != (data->line_width[i + 1] + 1))
-		exit_with_message(4);
+	{
+		if (data->mapstr[i + 1][0] != '\n')
+		{
+			exit_with_message(4);
+			ft_free1(data);
+		}
+	}
 }
 
-void	line_are_all_1(char *line)
+void	line_are_all_1(char *line, t_data *data)
 {
 	int i;
 
@@ -47,7 +56,10 @@ void	line_are_all_1(char *line)
 	while(line[i] != '\0' && line[i] != '\n')
 	{
 		if(line[i] != '1')
+		{
 			exit_with_message(5);
+			ft_free1(data);
+		}
 		i++;
 	}
 }
@@ -60,36 +72,48 @@ void	column_are_all_1(t_data *data, int column)
 	while(i < data->height)
 	{
 		if (data->mapstr[i][column] != '1')
+		{
 			exit_with_message(5);
+			ft_free1(data);
+		}
 		i++;
 	}
 }
 
 void	check_if_have_exit(t_data *data)
 {
-	int i;
-	int j;
+	int x;
+	int y;
 	int E;
 
-	j = 0;
-	i = 0;
+	y = 0;
+	x = 0;
 	E = 0;
-	while(i < data->height)
+	while(x < data->height)
 	{
-		j = 0;
-		while(data->mapstr[i][j])
+		y = 0;
+		while(data->mapstr[x][y])
 		{
-			if (data->mapstr[i][j] == 'E')
+			if (data->mapstr[x][y] == 'E')
+			{
 				E++;
-			j++;
+				data->exit_y = y + 1;
+				data->exit_x = x + 1;
+			}
+			y++;
 		}
-		i++;
+		x++;
 	}
 	if (E == 0)
+	{
 		exit_with_message(6);
+		ft_free1(data);
+	}
 	if (E > 1)
+	{
 		exit_with_message(7);
-	printf("El mapa tiene 1 salida\n");
+		ft_free1(data);
+	}
 }
 
 void	check_collectibles(t_data *data)
@@ -113,47 +137,56 @@ void	check_collectibles(t_data *data)
 		j = 0;
 	}
 	if (C == 0)
+	{
 		exit_with_message(8);
+		ft_free1(data);
+	}
 	data->collectibles = C;
-	printf("El mapa tiene %i coleccionables\n", data->collectibles);
 }
 
 void	check_starting_position(t_data *data)
 {
-	int y;
 	int x;
+	int y;
 	int P;
 
 	y = 0;
 	x = 0;
 	P = 0;
-	while(y < data->height)
+	while(x < data->height)
 	{
-		x = 0;
-		while(data->mapstr[y][x])
+		y = 0;
+		while(data->mapstr[x][y])
 		{
-			if (data->mapstr[y][x] == 'P')
+			if (data->mapstr[x][y] == 'P')
+			{
 				P++;
-			x++;
+				data->player_y = y + 1;
+				data->player_x = x + 1;
+			}
+			y++;
 		}
-		y++;
+		x++;
 	}
-	data->start_y = y;
-	data->start_x = x;
 	if (P == 0)
+	{
 		exit_with_message(9);
+		ft_free1(data);
+	}
 	if (P > 1)
+	{
 		exit_with_message(10);
-	printf("El mapa tiene una posicion de entrada, la cual es %d %d \n", data->start_x, data->start_y);
+		ft_free1(data);
+	}
 }
 
 void	check_if_its_enclosed(t_data *data)
 {
-	line_are_all_1(data->mapstr[0]);
-	line_are_all_1(data->mapstr[data->height - 1]);
+	line_are_all_1(data->mapstr[0], data);
+	line_are_all_1(data->mapstr[data->height - 1], data);
 	column_are_all_1(data, 0);
 	column_are_all_1(data, data->width - 1);
-	printf("El mapa está cerrado\n");
+	
 }
 
 void	check_characters(t_data *data)
@@ -163,15 +196,18 @@ void	check_characters(t_data *data)
 
 	x = 0;
 	y = 0;
-	while (data->mapstr[x][y])
+	while (data->mapstr[x] && data->mapstr[x][y] != '\0' && data->mapstr[x][y] != '\n')
 	{
-		y = 0;
-		while (data->mapstr[x][y])
+		while (data->mapstr[x][y] != '\0' && data->mapstr[x][y] != '\n')
 		{
 			if (data->mapstr[x][y] != '1' && data->mapstr[x][y] != '0' && data->mapstr[x][y] != 'P' && data->mapstr[x][y] != 'C' && data->mapstr[x][y] != 'E')
+			{
 				exit_with_message(13);
+				ft_free1(data);
+			}
 			y++;
 		}
 		x++;
+		y = 0;
 	}
 }
