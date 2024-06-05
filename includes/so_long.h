@@ -37,6 +37,7 @@ typedef struct s_data
 	int 	collectibles;
 	int		exit_x;
 	int		exit_y;
+	mlx_t	*mlx;
 }				t_data;
 
 int		main(int argc, char **argv);

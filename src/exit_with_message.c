@@ -71,3 +71,16 @@ void	exit_with_message(int a)
 	if (a == 13)
 		printf("Error\nMap with invalid characters\n");
 }
+
+/*
+void	exit_with_message_improved(t_data data, char *str, int i)
+{
+	ft_printf("%s", str);
+	ft_freestr(data->mapstr);
+	free(data->line_width);
+	if (i == 2)
+		ft_freestr(data->mapstrcopy);
+	free(data);
+	exit (0);
+}
+*/
