@@ -21,7 +21,7 @@ int	main(int argc, char **argv)
 	if (argc > 2)
 		exit_with_message(2);
 	map_parsec(argv[1], &data);
-	the_game(&data);
+//	the_game(&data);
 	ft_free2(&data);
 	return (0);
 }

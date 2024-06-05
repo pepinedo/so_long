@@ -25,19 +25,40 @@
 # define WIDTH 64
 # define HEIGHT 64
 
+typedef struct s_images
+{
+	void	*wall;
+	void	*floor;
+	void	*player;
+	void	*collectible;
+	void	*exit;
+}	t_images;
+
+typedef struct s_textures
+{
+	void	*wall;
+	void	*floor;
+	void	*player;
+	void	*collectible;
+	void	*exit;
+}	t_textures;
+
 typedef struct s_data
 {
-	char**	mapstr;
-	char**	mapstrcopy;
-	int		height;
-	int		width;
-	int*	line_width;
-	int		player_y;
-	int		player_x;
-	int 	collectibles;
-	int		exit_x;
-	int		exit_y;
-	mlx_t	*mlx;
+	char**		mapstr;
+	char**		mapstrcopy;
+	int			height;
+	int			width;
+	int*		line_width;
+	int			player_y;
+	int			player_x;
+	int 		collectibles;
+	int			exit_x;
+	int			exit_y;
+	mlx_t		*mlx;
+	t_textures 	*textures;
+	t_images	*images;
+
 }				t_data;
 
 int		main(int argc, char **argv);
