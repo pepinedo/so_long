@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-void	check_if_its_ber(char *fdmap)
+void	check_if_its_ber(t_data *data, char *fdmap)
 {
 	int	i;
 
@@ -21,7 +21,7 @@ void	check_if_its_ber(char *fdmap)
 		i++;
 	if (fdmap[--i] != 'r' || fdmap[--i] != 'e' || fdmap[--i] != 'b'
 		|| fdmap[--i] != '.')
-		exit_with_message(3);
+		exit_with_message(data, "Error\nArgument is not a .ber file\n", 0);
 }
 
 void	check_if_its_rectangular(t_data *data)
@@ -32,51 +32,13 @@ void	check_if_its_rectangular(t_data *data)
 	while(i < (data->height - 2))
 	{
 		if (data->line_width[i] != data->line_width[i + 1])
-		{
-			exit_with_message(4);
-			ft_free1(data);
-		}
+			exit_with_message(data, "Error\nThe map is not rectangular\n", 1);
 		i++;
 	}
 	if(data->line_width[i] != (data->line_width[i + 1] + 1))
 	{
 		if (data->mapstr[i + 1][0] != '\n')
-		{
-			exit_with_message(4);
-			ft_free1(data);
-		}
-	}
-}
-
-void	line_are_all_1(char *line, t_data *data)
-{
-	int i;
-
-	i = 0;
-	while(line[i] != '\0' && line[i] != '\n')
-	{
-		if(line[i] != '1')
-		{
-			exit_with_message(5);
-			ft_free1(data);
-		}
-		i++;
-	}
-}
-
-void	column_are_all_1(t_data *data, int column)
-{
-	int i;
-	
-	i = 0;
-	while(i < data->height)
-	{
-		if (data->mapstr[i][column] != '1')
-		{
-			exit_with_message(5);
-			ft_free1(data);
-		}
-		i++;
+			exit_with_message(data, "Error\nThe map is not rectangular\n", 1);
 	}
 }
 
@@ -105,15 +67,9 @@ void	check_if_have_exit(t_data *data)
 		x++;
 	}
 	if (E == 0)
-	{
-		exit_with_message(6);
-		ft_free1(data);
-	}
+		exit_with_message(data, "Error\nMap without exit\n", 1);
 	if (E > 1)
-	{
-		exit_with_message(7);
-		ft_free1(data);
-	}
+		exit_with_message(data, "Error\nMap with more than 1 exit\n", 1);
 }
 
 void	check_collectibles(t_data *data)
@@ -137,10 +93,7 @@ void	check_collectibles(t_data *data)
 		j = 0;
 	}
 	if (C == 0)
-	{
-		exit_with_message(8);
-		ft_free1(data);
-	}
+		exit_with_message(data, "Error\nMap without collectibles\n", 1);
 	data->collectibles = C;
 }
 
@@ -169,14 +122,34 @@ void	check_starting_position(t_data *data)
 		x++;
 	}
 	if (P == 0)
-	{
-		exit_with_message(9);
-		ft_free1(data);
-	}
+		exit_with_message(data, "Error\nMap without starting position\n", 1);
 	if (P > 1)
+		exit_with_message(data, "Error\nMap with more than 1 starting position\n", 1);
+}
+
+void	column_are_all_1(t_data *data, int column)
+{
+	int i;
+	
+	i = 0;
+	while(i < data->height)
 	{
-		exit_with_message(10);
-		ft_free1(data);
+		if (data->mapstr[i][column] != '1')
+			exit_with_message(data, "Error\nThe map is not enclosed\n", 1);
+		i++;
+	}
+}
+
+void	line_are_all_1(char *line, t_data *data)
+{
+	int i;
+
+	i = 0;
+	while(line[i] != '\0' && line[i] != '\n')
+	{
+		if(line[i] != '1')
+			exit_with_message(data, "Error\nThe map is not enclosed\n", 1);
+		i++;
 	}
 }
 
@@ -201,10 +174,7 @@ void	check_characters(t_data *data)
 		while (data->mapstr[x][y] != '\0' && data->mapstr[x][y] != '\n')
 		{
 			if (data->mapstr[x][y] != '1' && data->mapstr[x][y] != '0' && data->mapstr[x][y] != 'P' && data->mapstr[x][y] != 'C' && data->mapstr[x][y] != 'E')
-			{
-				exit_with_message(13);
-				ft_free1(data);
-			}
+				exit_with_message(data, "Error\nMap with invalid characters\n", 1);
 			y++;
 		}
 		x++;

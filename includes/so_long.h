@@ -22,8 +22,8 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-# define WIDTH 64
-# define HEIGHT 64
+# define P_WIDTH 64
+# define P_HEIGHT 64
 
 typedef struct s_images
 {
@@ -50,17 +50,21 @@ typedef struct s_data
 	int			height;
 	int			width;
 	int*		line_width;
-	int			player_y;
 	int			player_x;
+	int			player_y;
 	int 		collectibles;
 	int			exit_x;
 	int			exit_y;
 	mlx_t		*mlx;
 	t_textures 	*textures;
 	t_images	*images;
+	mlx_image_t	*count_move;
+	int			total_moves;
 
 }				t_data;
 
+
+//-------------MAIN----------------------
 int		main(int argc, char **argv);
 
 //----------Map Parsec Functions---------
@@ -87,10 +91,22 @@ void	check_characters(t_data *data);
 void	ft_strdup_without_n(const char *str, int i, t_data *data);
 void	print_map(char **map);
 void	copy_map(t_data *data);
-
-void	exit_with_message(int a);
-void	ft_free1(t_data *data);
+void	exit_with_message(t_data data, char *str, int i)
 void	ft_freestr(char **s);
-void	ft_free2(t_data *data);
+
+//--------------Game----------------------
+void    the_game(t_data *data);
+bool    load_pngs(t_data *data);
+void    images_to_window(t_data *data);
+void	draw_the_sqm(int x, int y, char c, t_data *data);
+void	set_keys(mlx_key_data_t keycode, void *param);
+void    player_movement(t_data *data, int tx, int ty);
+void	move_to_floor(t_data *data, int x, int y);
+void	move_to_collectible(t_data *data, int x, int y);
+void	move_to_exit(t_data *data, int x, int y);
+void    delete_textures(t_data *data);
+
+
+
 
 #endif

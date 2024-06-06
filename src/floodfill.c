@@ -50,11 +50,8 @@ void    check_flood(t_data *data)
 	{
 		while (data->mapstrcopy[x][y] != '\0' && data->mapstrcopy[x][y] != '\n')
 		{
-			if (data->mapstrcopy[x][y] == 'P' || data->mapstrcopy[x][y] == 'C' || data->mapstrcopy[x][y] == 'E')
-			{
-				exit_with_message(12);
-				ft_free2(data);
-			}
+			if (data->mapstrcopy[x][y] == 'C' || data->mapstrcopy[x][y] == 'E')
+				exit_with_message(data, "Error\nMap with Exit no reachable\n", 1);
 			y++;
 		}
 		x++;

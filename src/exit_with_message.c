@@ -25,6 +25,7 @@ void	ft_freestr(char **s)
 	free(s);
 }
 
+/*
 void	ft_free2(t_data *data)
 {
 	ft_freestr(data->mapstr);
@@ -41,6 +42,7 @@ void	ft_free1(t_data *data)
 	free(data);
 	exit (0);
 }
+
 
 void	exit_with_message(int a)
 {
@@ -71,16 +73,20 @@ void	exit_with_message(int a)
 	if (a == 13)
 		printf("Error\nMap with invalid characters\n");
 }
+*/
 
-/*
-void	exit_with_message_improved(t_data data, char *str, int i)
+
+void	exit_with_message(t_data data, char *str, int i)
 {
 	ft_printf("%s", str);
-	ft_freestr(data->mapstr);
-	free(data->line_width);
-	if (i == 2)
+	if (i >= 1)
+	{
+		ft_freestr(data->mapstr);
+		free(data->line_width);
+	}
+	if (i >= 2)
 		ft_freestr(data->mapstrcopy);
 	free(data);
 	exit (0);
 }
-*/
+

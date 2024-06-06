@@ -81,7 +81,7 @@ void	map_height(char *fdmap, t_data *data)
 
 void	map_parsec(char *fdmap, t_data *data)
 {
-	check_if_its_ber(fdmap);
+	check_if_its_ber(data, fdmap);
 	map_height(fdmap, data);
 	map_width(fdmap, data);
 	map_char(fdmap, data);
@@ -94,6 +94,7 @@ void	map_parsec(char *fdmap, t_data *data)
 	copy_map(data);
 	floodfill(data->mapstrcopy, data->player_x - 1, data->player_y - 1);
 	check_flood(data);
+	data->total_moves = 0;
 	printf("✅​ MAPA OK.\n");
-	return;
+	return ;
 }
