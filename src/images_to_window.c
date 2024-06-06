@@ -47,19 +47,19 @@ void    images_to_window(t_data *data)
 
 bool    load_pngs(t_data *data) //aqui hay que crear la carpeta de las imagenes, descargar las imagenes ahí y poner la ruta en cada funcion
 {
-    data->textures.wall = mlx_load_png(ruta de la imagen);
+    data->textures.wall = mlx_load_png(./textures/wall.png);
     if (!data->wall_png)
         return (false);
-    data->textures.floor = mlx_load_png(ruta de la imagen);
+    data->textures.floor = mlx_load_png(./textures/floor.png);
     if (!data->wall_png)
         return (false);
-    data->textures.player = mlx_load_png(ruta de la imagen);
+    data->textures.player = mlx_load_png(./textures/player.png);
     if (!data->wall_png)
         return (false);
-    data->textures.collectible = mlx_load_png(ruta de la imagen);
+    data->textures.collectible = mlx_load_png(./textures/collectible.png);
     if (!data->wall_png)
         return (false);
-    data->textures.exit = mlx_load_png(ruta de la imagen);
+    data->textures.exit = mlx_load_png(./textures/exit.png);
     if (!data->wall_png)
         return (false);
     return (true);

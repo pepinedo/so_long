@@ -63,7 +63,6 @@ typedef struct s_data
 
 }				t_data;
 
-
 //-------------MAIN----------------------
 int		main(int argc, char **argv);
 
@@ -105,8 +104,5 @@ void	move_to_floor(t_data *data, int x, int y);
 void	move_to_collectible(t_data *data, int x, int y);
 void	move_to_exit(t_data *data, int x, int y);
 void    delete_textures(t_data *data);
-
-
-
 
 #endif
