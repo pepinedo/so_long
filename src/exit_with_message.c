@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:03:32 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/06/05 16:16:42 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/06/07 09:09:41 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,13 @@ void	exit_with_message(int a)
 }
 */
 
+void	exit_before_inicializate(char *str)
+{
+	ft_printf("%s", str);
+	exit (0);
+}
 
-void	exit_with_message(t_data data, char *str, int i)
+void	exit_with_message(t_data *data, char *str, int i)
 {
 	ft_printf("%s", str);
 	if (i >= 1)

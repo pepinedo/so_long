@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move_player.c                                      :+:      :+:    :+:   */
+/*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 01:41:59 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/06 01:41:59 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/07 09:15:21 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void    player_movement(t_data *data, int tx, int ty)
 	if (data->mapstr[px + tx][py + ty] == 'C')
 		move_to_collectible(data, tx, ty);
 	if (data->mapstr[px + tx][py + ty] == 'E' && data->collectibles != 0)
-		move_to_exit(data, x, y);
+		move_to_exit(data, tx, ty);
 	if (data->mapstr[px + tx][py + ty] == 'E' && data->collectibles == 0)
 	{
 		ft_printf("YOU WIN IN %d MOVES\n", data->total_moves);

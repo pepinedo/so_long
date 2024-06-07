@@ -6,7 +6,7 @@
 /*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 12:19:13 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/06/05 16:53:19 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/06/07 09:11:28 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,7 @@ typedef struct s_data
 int		main(int argc, char **argv);
 
 //----------Map Parsec Functions---------
-void		map_parsec(char *fdmap, t_data *data);
-void	check_if_its_ber(char *fdmap);
+void	map_parsec(char *fdmap, t_data *data);
 void	map_height(char *fdmap, t_data *data);
 void	map_char(char *fdmap, t_data *data);
 void	map_width(char *fdmap, t_data *data);
@@ -76,7 +75,7 @@ void	floodfill(char **map, int x, int y);
 void    check_flood(t_data *data);
 
 //----------Check functions-------------
-void	check_if_its_ber(char *fdmap);
+void	check_if_its_ber(t_data *data, char *fdmap);
 void	check_if_its_rectangular(t_data *data);
 void	check_if_its_enclosed(t_data *data);
 void	line_are_all_1(char *line, t_data *data);
@@ -90,7 +89,8 @@ void	check_characters(t_data *data);
 void	ft_strdup_without_n(const char *str, int i, t_data *data);
 void	print_map(char **map);
 void	copy_map(t_data *data);
-void	exit_with_message(t_data data, char *str, int i)
+void	exit_with_message(t_data *data, char *str, int i);
+void	exit_before_inicializate(char *str);
 void	ft_freestr(char **s);
 
 //--------------Game----------------------

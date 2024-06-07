@@ -28,7 +28,7 @@ WHITE = \033[0;97m
 
 #Sources
 	
-SRC_FILES = main exit_with_message map_parsec checks floodfill
+SRC_FILES = main exit_with_message map_parsec checks floodfill images_to_window player_movement the_game
 
 B_SRC_FILES = 
 

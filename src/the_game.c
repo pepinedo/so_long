@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   the_data.c                                         :+:      :+:    :+:   */
+/*   the_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 00:33:10 by marvin            #+#    #+#             */
-/*   Updated: 2024/06/06 00:33:10 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/07 09:16:28 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 
 void    delete_textures(t_data *data)
 {
-    mlx_delete_texture(data->textures.wall);
-	mlx_delete_texture(data->textures.floor);
-	mlx_delete_texture(data->textures.player);
-	mlx_delete_texture(data->textures.collectible);
-	mlx_delete_texture(data->textures.exit);
+    mlx_delete_texture(data->textures->wall);
+	mlx_delete_texture(data->textures->floor);
+	mlx_delete_texture(data->textures->player);
+	mlx_delete_texture(data->textures->collectible);
+	mlx_delete_texture(data->textures->exit);
 }
 
 void	set_keys(mlx_key_data_t keycode, void *param)
@@ -42,11 +42,11 @@ void	set_keys(mlx_key_data_t keycode, void *param)
 
 void    the_game(t_data *data)
 {
-    data->mlx = mlx_init(WIDTH * data->width, HEIGHT * data->height, " < so_long, EL JUEGO > ", false);
+    data->mlx = mlx_init(P_WIDTH * data->width, P_HEIGHT * data->height, " < so_long, EL JUEGO > ", false);
     if (!data->mlx)
-        exit_with_message_improved(data, "Error\nMLX load failure.\n", 2);
+        exit_with_message(data, "Error\nMLX load failure.\n", 2);
     if (!load_pngs(data))
-        exit_with_message_improved(data, "Error\nImages not found.\n", 2);
+        exit_with_message(data, "Error\nImages not found.\n", 2);
     images_to_window(data);
     mlx_key_hook(data->mlx, &set_keys, data);
     mlx_loop(data->mlx);
