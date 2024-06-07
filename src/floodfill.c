@@ -6,29 +6,17 @@
 /*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:44:44 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/06/05 17:05:30 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/06/07 13:04:08 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-// void	print_map(char **map)
-// {
-// 	int i;
-
-// 	i = 0;
-// 	while (i < 3)
-// 	{
-// 		printf("%s\n", map[i]);
-// 		i++;
-// 	}
-// }
-
 void	copy_map(t_data *data)
 {
 	int		i;
 
-	data->mapstrcopy = (char **)malloc(sizeof(char *) * data->height);
+	data->mapstrcopy = (char **)malloc(sizeof(char *) * (data->height + 1));
 	if (data->mapstrcopy == NULL)
 		return ;
 	i = 0;
@@ -37,6 +25,7 @@ void	copy_map(t_data *data)
 		data->mapstrcopy[i] = ft_strtrim(data->mapstr[i], "\n");
 		i++;
 	}
+	data->mapstrcopy[i] = NULL;
 }
 
 void    check_flood(t_data *data)
