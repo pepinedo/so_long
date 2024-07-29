@@ -25,7 +25,7 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}t_list;
+}	t_list;
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 4
@@ -48,7 +48,7 @@ char	*ft_itoa(int n); // to change from int to char
  * @param str String
  * @return size_t - len
  */
-size_t	ft_strlen(char *s);
+size_t			ft_strlen(char *s);
 
 /**
  * @brief compare 2 string (n characters)
@@ -58,7 +58,7 @@ size_t	ft_strlen(char *s);
  * @param n characters to campare
  * @return int - return the difference between (str1[i] - str2[i])
  */
-int		ft_strncmp(const char *str1, const char *str2, size_t n);
+int				ft_strncmp(const char *str1, const char *str2, size_t n);
 
 /**
  * @brief  // copy 'l' characters from src to dst
@@ -68,7 +68,7 @@ int		ft_strncmp(const char *str1, const char *str2, size_t n);
  * @param dstsize 
  * @return size_t - the size of the string copied
  */
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
+size_t			ft_strlcpy(char *dst, char *src, size_t dstsize);
 
 /**
  * @brief concatenate 'l' characters from src to dst
@@ -78,7 +78,7 @@ size_t	ft_strlcpy(char *dst, char *src, size_t dstsize);
  * @param dstsize 
  * @return size_t - the size of the new str
  */
-size_t	ft_strlcat(char *dst, char *src, size_t dstsize);
+size_t			ft_strlcat(char *dst, char *src, size_t dstsize);
 
 /**
  * @brief to check if the 'c' character is in the string
@@ -96,7 +96,7 @@ unsigned int	ft_strchr(char *s, char c);
  * @param c 
  * @return char* 
  */
-char	*ft_strrchr(const char *s, int c);
+char			*ft_strrchr(const char *s, int c);
 
 /**
  * @brief  to find 'needle' into 'haystack' and return the find
@@ -106,7 +106,7 @@ char	*ft_strrchr(const char *s, int c);
  * @param len 
  * @return char* - return the finded
  */
-char	*ft_strnstr(const char *haystack, char *needle, size_t len);
+char			*ft_strnstr(const char *haystack, char *needle, size_t len);
 
 /**
  * @brief to create (duplicate) a string
@@ -114,7 +114,7 @@ char	*ft_strnstr(const char *haystack, char *needle, size_t len);
  * @param s1 the string to duplicate
  * @return char* - the string created
  */
-char	*ft_strdup(const char *s1);
+char			*ft_strdup(const char *s1);
 
 /**
  * @brief create a substring from start, with len size
@@ -124,7 +124,7 @@ char	*ft_strdup(const char *s1);
  * @param len size of the substring
  * @return char* - the substring
  */
-char	*ft_substr(char *s, size_t start, size_t len);
+char			*ft_substr(char *s, size_t start, size_t len);
 
 /**
  * @brief Concadenate de s2 into s1, creating a new str
@@ -133,7 +133,7 @@ char	*ft_substr(char *s, size_t start, size_t len);
  * @param s2 
  * @return char* 
  */
-char	*ft_strjoin(char *s1, char *s2);
+char			*ft_strjoin(char *s1, char *s2);
 
 /**
  * @brief create a new str applying the Function to each character to the str
@@ -142,7 +142,7 @@ char	*ft_strjoin(char *s1, char *s2);
  * @param f 
  * @return char* 
  */
-char	*ft_strmapi(char *s, char (*f)(unsigned int, char));
+char			*ft_strmapi(char *s, char (*f)(unsigned int, char));
 
 /**
  * @brief apply the Funcion in each character of the str, modifying the str
@@ -150,7 +150,7 @@ char	*ft_strmapi(char *s, char (*f)(unsigned int, char));
  * @param s 
  * @param f 
  */
-void	ft_striteri(char *s, void (*f)(unsigned int, char*));
+void			ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 /**
  * @brief delete characters from the start and the fianl of s1
@@ -159,7 +159,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*));
  * @param set the characters to delete
  * @return char* 
  */
-char	*ft_strtrim(char const *s1, char const *set);
+char			*ft_strtrim(char const *s1, char const *set);
 
 /**
  * @brief create a str filled with 0s
@@ -168,7 +168,7 @@ char	*ft_strtrim(char const *s1, char const *set);
  * @param size 
  * @return void* 
  */
-void	*ft_calloc(size_t count, size_t size);
+void			*ft_calloc(size_t count, size_t size);
 
 /**
  * @brief create substring 
@@ -177,7 +177,7 @@ void	*ft_calloc(size_t count, size_t size);
  * @param c the character to delimitate the string
  * @return char** 
  */
-char	**ft_split(char const *s, char c);
+char			**ft_split(char const *s, char c);
 
 /**
  * @brief delete the data of the str, and fill it with zeroes
@@ -185,7 +185,7 @@ char	**ft_split(char const *s, char c);
  * @param str 
  * @param n 
  */
-void	ft_bzero(void *str, size_t n);
+void			ft_bzero(void *str, size_t n);
 
 /**
  * @brief delete the data of str and fill it with the c character
@@ -195,7 +195,7 @@ void	ft_bzero(void *str, size_t n);
  * @param len 
  * @return void* 
  */
-void	*ft_memset(void *d, int c, size_t len);
+void			*ft_memset(void *d, int c, size_t len);
 
 /**
  * @brief copy n bytes 
@@ -205,7 +205,7 @@ void	*ft_memset(void *d, int c, size_t len);
  * @param n 
  * @return void* 
  */
-void	*ft_memcpy(void *dst, const void *src, size_t n);
+void			*ft_memcpy(void *dst, const void *src, size_t n);
 
 /**
  * @brief copy n bytes
@@ -215,7 +215,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
  * @param len 
  * @return void* 
  */
-void	*ft_memmove(void *dst, const void *src, size_t len);
+void			*ft_memmove(void *dst, const void *src, size_t len);
 
 /**
  * @brief compare the first n bytes of the memory areas of the string
@@ -225,7 +225,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len);
  * @param n 
  * @return int 
  */
-int		ft_memcmp(const void *s1, const void *s2, size_t n);
+int				ft_memcmp(const void *s1, const void *s2, size_t n);
 
 /**
  * @brief check if the c character is in the string
@@ -235,7 +235,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
  * @param n 
  * @return void* a pointer of the localitacion
  */
-void	*ft_memchr(const void *s, int c, size_t n);
+void			*ft_memchr(const void *s, int c, size_t n);
 
 /**
  * @brief write the string in fd
@@ -243,7 +243,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
  * @param str 
  * @param fd where the string will be writed
  */
-void	ft_putstr_fd(char *str, int fd);
+void			ft_putstr_fd(char *str, int fd);
 
 /**
  * @brief write the character in fd
@@ -251,7 +251,7 @@ void	ft_putstr_fd(char *str, int fd);
  * @param c 
  * @param fd where the string will be writed
  */
-void	ft_putchar_fd(char c, int fd);
+void			ft_putchar_fd(char c, int fd);
 
 /**
  * @brief write the string in fd, followed by a new line
@@ -259,7 +259,7 @@ void	ft_putchar_fd(char c, int fd);
  * @param s 
  * @param fd where the string will be writed
  */
-void	ft_putendl_fd(char *s, int fd);
+void			ft_putendl_fd(char *s, int fd);
 
 /**
  * @brief write the number in fd
@@ -267,28 +267,28 @@ void	ft_putendl_fd(char *s, int fd);
  * @param n 
  * @param fd where the string will be writed
  */
-void	ft_putnbr_fd(int n, int fd);
+void			ft_putnbr_fd(int n, int fd);
 
 /** Printf **/
-int		ft_printf(const char *type, ...);
-int		ft_putchar(char c);
-int		ft_putstr(char *s);
-int		ft_putnbr(int nbr, int i);
-int		ft_putptr(void *ptr);
-int		ft_putunbr(unsigned int nbr, int i);
-int		ft_puthex(char *base, unsigned int nbr, int i);
-size_t		ft_strlen(char *s);
+int				ft_printf(const char *type, ...);
+int				ft_putchar(char c);
+int				ft_putstr(char *s);
+int				ft_putnbr(int nbr, int i);
+int				ft_putptr(void *ptr);
+int				ft_putunbr(unsigned int nbr, int i);
+int				ft_puthex(char *base, unsigned int nbr, int i);
+size_t			ft_strlen(char *s);
 
 /** List Functions **/
-t_list	*ft_lstnew(void *content);
-int		ft_lstsize(t_list *lst);
-void	ft_lstadd_front(t_list **lst, t_list *new);
-t_list	*ft_lstlast(t_list *lst);
-void	ft_lstadd_back(t_list **lst, t_list *new);
-void	ft_lstdelone(t_list *lst, void (*del)(void *));
-void	ft_lstclear(t_list **lst, void (*del)(void *));
-void	ft_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
+t_list			*ft_lstnew(void *content);
+int				ft_lstsize(t_list *lst);
+void			ft_lstadd_front(t_list **lst, t_list *new);
+t_list			*ft_lstlast(t_list *lst);
+void			ft_lstadd_back(t_list **lst, t_list *new);
+void			ft_lstdelone(t_list *lst, void (*del)(void *));
+void			ft_lstclear(t_list **lst, void (*del)(void *));
+void			ft_lstiter(t_list *lst, void (*f)(void *));
+t_list			*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 /** Get Next Line **/
 char			*get_next_line(int fd);

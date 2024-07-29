@@ -28,10 +28,10 @@ void	copy_map(t_data *data)
 	data->mapstrcopy[i] = NULL;
 }
 
-void    check_flood(t_data *data)
+void	check_flood(t_data *data)
 {
-    int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;
@@ -51,7 +51,7 @@ void    check_flood(t_data *data)
 void	floodfill(char **map, int x, int y)
 {
 	if (y < 0 || x < 0 || map[x][y] == '\0' || map[x][y] == '1' || map[x][y] == '*')
-		return;
+		return ;
 	if (map[x][y] == '0' || map[x][y] == 'C' || map[x][y] == 'E' || map[x][y] == 'P')
 	{
 		map[x][y] = '*';

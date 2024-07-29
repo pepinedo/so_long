@@ -24,7 +24,8 @@ void	move_to_exit(t_data *data, int x, int y)
 	data->player_x = data->player_x + x;
 	data->player_y = data->player_y + y;
 	draw_the_sqm(px, py, '0', data);
-    draw_the_sqm(data->player_x, data->player_y, 'P', data);
+	draw_the_sqm(data->player_x, data->player_y, 'E', data);
+	draw_the_sqm(data->player_x, data->player_y, 'P', data);
 	data->fail_exit = 1;
 }
 
@@ -39,7 +40,7 @@ void	move_to_collectible(t_data *data, int x, int y)
 	data->mapstr[px + x][py + y] = 'P';
 	data->player_x = data->player_x + x;
 	data->player_y = data->player_y + y;
-    draw_the_sqm(px, py, '0', data);
+	draw_the_sqm(px, py, '0', data);
 	draw_the_sqm(data->player_x, data->player_y, 'P', data);
 	data->collectibles--;
 }
@@ -55,7 +56,7 @@ void	move_to_floor(t_data *data, int x, int y)
 	data->mapstr[px + x][py + y] = 'P';
 	data->player_x = data->player_x + x;
 	data->player_y = data->player_y + y;
-    draw_the_sqm(px, py, '0', data);
+	draw_the_sqm(px, py, '0', data);
 	if (data->fail_exit == 1)
 	{
 		data->mapstr[px][py] = 'E';
@@ -65,9 +66,9 @@ void	move_to_floor(t_data *data, int x, int y)
 	draw_the_sqm(data->player_x, data->player_y, 'P', data);
 }
 
-void    player_movement(t_data *data, int tx, int ty)
+void	player_movement(t_data *data, int tx, int ty)
 {
-    int	px;
+	int	px;
 	int	py;
 
 	px = data->player_x;
@@ -86,6 +87,6 @@ void    player_movement(t_data *data, int tx, int ty)
 		mlx_close_window(data->mlx);
 		return ;
 	}
-    data->total_moves++;
-	ft_printf("Move count:         < 🚶%d >\nCollectibles count: < 🏆​%d >\n", data->total_moves, data->collectibles);
+	data->total_moves++;
+	ft_printf("%d Moves / %d Keys left\n--\n", data->total_moves, data->collectibles);
 }

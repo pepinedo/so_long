@@ -21,7 +21,7 @@ void	set_variables(t_data *data)
 
 int	main(int argc, char **argv)
 {
-	t_data data;
+	t_data	data;
 
 	if (argc <= 1)
 		exit_before_inicializate("Error\nTo few arguments\n\n");

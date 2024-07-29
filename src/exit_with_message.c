@@ -46,4 +46,3 @@ void	exit_with_message(t_data *data, char *str, int i)
 		ft_freestr(data->mapstrcopy);
 	exit (0);
 }
-

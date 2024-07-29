@@ -26,16 +26,16 @@ void	check_if_its_ber(t_data *data, char *fdmap)
 
 void	check_if_its_rectangular(t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < (data->height - 2))
+	while (i < (data->height - 2))
 	{
 		if (data->line_width[i] != data->line_width[i + 1])
 			exit_with_message(data, "Error\nThe map is not rectangular\n", 1);
 		i++;
 	}
-	if(data->line_width[i] != (data->line_width[i + 1] + 1))
+	if (data->line_width[i] != (data->line_width[i + 1] + 1))
 	{
 		if (data->mapstr[i + 1][0] != '\n')
 			exit_with_message(data, "Error\nThe map is not rectangular\n", 1);
@@ -44,17 +44,17 @@ void	check_if_its_rectangular(t_data *data)
 
 void	check_if_have_exit(t_data *data)
 {
-	int x;
-	int y;
-	int E;
+	int	x;
+	int	y;
+	int	E;
 
 	y = 0;
 	x = 0;
 	E = 0;
-	while(x < data->height)
+	while (x < data->height)
 	{
 		y = 0;
-		while(data->mapstr[x][y])
+		while (data->mapstr[x][y])
 		{
 			if (data->mapstr[x][y] == 'E')
 			{
@@ -74,16 +74,16 @@ void	check_if_have_exit(t_data *data)
 
 void	check_collectibles(t_data *data)
 {
-	int i;
-	int j;
-	int C;
+	int	i;
+	int	j;
+	int	C;
 
 	j = 0;
 	i = 0;
 	C = 0;
-	while(i < data->height)
+	while (i < data->height)
 	{
-		while(data->mapstr[i][j])
+		while (data->mapstr[i][j])
 		{
 			if (data->mapstr[i][j] == 'C')
 				C++;
@@ -99,17 +99,17 @@ void	check_collectibles(t_data *data)
 
 void	check_starting_position(t_data *data)
 {
-	int x;
-	int y;
-	int P;
+	int	x;
+	int	y;
+	int	P;
 
 	y = 0;
 	x = 0;
 	P = 0;
-	while(x < data->height)
+	while (x < data->height)
 	{
 		y = 0;
-		while(data->mapstr[x][y])
+		while (data->mapstr[x][y])
 		{
 			if (data->mapstr[x][y] == 'P')
 			{
@@ -129,10 +129,10 @@ void	check_starting_position(t_data *data)
 
 void	column_are_all_1(t_data *data, int column)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
-	while(i < data->height)
+	while (i < data->height)
 	{
 		if (data->mapstr[i][column] != '1')
 			exit_with_message(data, "Error\nThe map is not enclosed\n", 1);
@@ -142,12 +142,12 @@ void	column_are_all_1(t_data *data, int column)
 
 void	line_are_all_1(char *line, t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(line[i] != '\0' && line[i] != '\n')
+	while (line[i] != '\0' && line[i] != '\n')
 	{
-		if(line[i] != '1')
+		if (line[i] != '1')
 			exit_with_message(data, "Error\nThe map is not enclosed\n", 1);
 		i++;
 	}
@@ -159,13 +159,12 @@ void	check_if_its_enclosed(t_data *data)
 	line_are_all_1(data->mapstr[data->height - 1], data);
 	column_are_all_1(data, 0);
 	column_are_all_1(data, data->width - 1);
-	
 }
 
 void	check_characters(t_data *data)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	x = 0;
 	y = 0;

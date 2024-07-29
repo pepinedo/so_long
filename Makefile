@@ -9,7 +9,7 @@ LIBFT = lib/libft/
 SRC_DIR = src/
 B_SRC_DIR = src/bonus/
 OBJ_DIR = obj/
-CC = clang -g
+CC = gcc -g
 CFLAGS = -Wall -Werror -Wextra
 AR = ar rcs
 

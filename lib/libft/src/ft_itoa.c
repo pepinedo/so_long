@@ -23,7 +23,7 @@ static int	f_lenint(long int n)
 	{
 		n = -n;
 		len++;
-	}	
+	}
 	while (n > 0)
 	{
 		n = n / 10;
