@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floodfill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ppinedo- <ppinedo-@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 12:44:44 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/06/07 13:04:08 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:58:14 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	check_flood(t_data *data)
 		while (data->mapstrcopy[x][y] != '\0' && data->mapstrcopy[x][y] != '\n')
 		{
 			if (data->mapstrcopy[x][y] == 'C' || data->mapstrcopy[x][y] == 'E')
-				exit_with_message(data, "Error\nMap with Exit no reachable\n", 1);
+				exit_with_message(data, "Error\nExit not reachable\n", 1);
 			y++;
 		}
 		x++;
@@ -50,9 +50,11 @@ void	check_flood(t_data *data)
 
 void	floodfill(char **map, int x, int y)
 {
-	if (y < 0 || x < 0 || map[x][y] == '\0' || map[x][y] == '1' || map[x][y] == '*')
+	if (y < 0 || x < 0 || map[x][y] == '\0' ||
+			map[x][y] == '1' || map[x][y] == '*')
 		return ;
-	if (map[x][y] == '0' || map[x][y] == 'C' || map[x][y] == 'E' || map[x][y] == 'P')
+	if (map[x][y] == '0' || map[x][y] == 'C' ||
+			map[x][y] == 'E' || map[x][y] == 'P')
 	{
 		map[x][y] = '*';
 		floodfill(map, x + 1, y);

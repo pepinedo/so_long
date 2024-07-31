@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppinedo- <ppinedo-@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ppinedo- <ppinedo-@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 17:22:07 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/03/05 13:22:56 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:01:55 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
 
-unsigned int	ft_strchr(char *s, char c)
+int	ft_strchr(char *s, char c)
 {
-	unsigned int		i;
+	int		i;
 
 	if (s == NULL)
 		return (0);

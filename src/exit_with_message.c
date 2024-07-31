@@ -3,14 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   exit_with_message.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ppinedo- <ppinedo-@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:03:32 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/06/07 12:00:24 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/07/31 13:07:08 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+void	check_starting_position_message(t_data *data, int p)
+{
+	if (p == 0)
+		exit_with_message(data, "Error\nMap without starting position\n", 1);
+	if (p > 1)
+		exit_with_message(data, "Error\nMulti-start Map\n", 1);
+}
+
+void	check_if_have_exit_message(t_data *data, int e)
+{
+	if (e == 0)
+		exit_with_message(data, "Error\nMap without exit\n", 1);
+	if (e > 1)
+		exit_with_message(data, "Error\nMap with more than 1 exit\n", 1);
+}
 
 void	ft_freestr(char **s)
 {

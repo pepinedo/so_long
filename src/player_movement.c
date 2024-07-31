@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ppinedo- <ppinedo-@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:02:58 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/06/07 13:46:35 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:58:29 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ void	player_movement(t_data *data, int tx, int ty)
 		return ;
 	}
 	data->total_moves++;
-	ft_printf("%d Moves / %d Keys left\n--\n", data->total_moves, data->collectibles);
+	ft_printf("%d Moves / %d Keys\n", data->total_moves, data->collectibles);
+	ft_printf("----------\n");
 }

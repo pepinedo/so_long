@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   the_game.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ppinedo- <ppinedo-@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 13:02:21 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/06/07 13:36:22 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/07/31 12:58:32 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	set_keys(mlx_key_data_t keycode, void *param)
 
 void	the_game(t_data *data)
 {
-	data->mlx = mlx_init(P_WIDTH * data->width, P_HEIGHT * data->height, " < EL JUEGO > ", false);
+	data->mlx = mlx_init(P_WIDTH * data->width, P_HEIGHT * data->height,
+			" < EL JUEGO > ", false);
 	if (!data->mlx)
 		exit_with_message(data, "Error\nMLX load failure.\n", 2);
 	if (!load_pngs(data))
