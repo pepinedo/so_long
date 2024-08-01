@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_parsec.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppinedo- <ppinedo-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 12:00:07 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/07/31 12:58:27 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/08/01 14:06:03 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,16 @@ void	map_height(char *fdmap, t_data *data)
 
 	fd = open(fdmap, O_RDONLY);
 	if (fd == -1)
-		return ;
+	{
+		ft_printf("Invalid file.\n");
+		exit(1);
+	}
 	line = get_next_line(fd);
+	if (line == NULL)
+	{
+		ft_printf("Empty map.\n");
+		exit(1);
+	}
 	data->height = 0;
 	while (line)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit_with_message.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ppinedo- <ppinedo-@student.42malaga.com>   +#+  +:+       +#+        */
+/*   By: ppinedo- <ppinedo-@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 11:03:32 by ppinedo-          #+#    #+#             */
-/*   Updated: 2024/07/31 13:07:08 by ppinedo-         ###   ########.fr       */
+/*   Updated: 2024/07/31 17:41:07 by ppinedo-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_starting_position_message(t_data *data, int p)
 {
-	if (p == 0)
+	if (p <= 0)
 		exit_with_message(data, "Error\nMap without starting position\n", 1);
 	if (p > 1)
 		exit_with_message(data, "Error\nMulti-start Map\n", 1);
