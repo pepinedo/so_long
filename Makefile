@@ -41,16 +41,10 @@ OBJF = .cache_exists
 ###
 
 all:
-	@$(MAKE) -C $(MLX42)
-	@$(MAKE) -C $(LIBFT)	
-	@$(MAKE) $(NAME)
+	@$(MAKE) -C $(MLX42) -s
+	@$(MAKE) -C $(LIBFT) -s
+	@$(MAKE) $(NAME) -s
 
-#-------------If u are using MacOS----------------
-# $(NAME):	$(OBJ)
-# 			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -o $(NAME) -L$(MLX42) -lmlx42 -L$(LIBFT)  -lft -framework Cocoa -framework OpenGL -framework IOKit -Iinclude -lglfw -L"/Users/$(USER)/.brew/opt/glfw/lib/" -o $(NAME)
-# 			@echo "$(GREEN)✅$(NAME) COMPILED!✅$(DEF_COLOR)"
-
-#-------------If u are using Linux---------------
 $(NAME):	$(OBJ)
 			@$(CC) -I./$(INCLUDE) $(CFLAGS) $(OBJ) -o $(NAME) -L$(MLX42) -lmlx42 -L$(LIBFT) -lft -Iinclude -ldl -lglfw -pthread -lm
 			@echo "$(GREEN)✅$(NAME) COMPILED!✅$(DEF_COLOR)"
